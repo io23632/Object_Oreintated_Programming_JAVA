@@ -1,4 +1,4 @@
-package org.example;
+package org.Code;
 import javax.swing.*;
 
 public class SimpleGUI {

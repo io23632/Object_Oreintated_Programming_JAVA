@@ -1,4 +1,4 @@
-package org.Code;
+package MyCode.JAVA_BroCode.BasicSyntax.src.main.java.org.Code;
 import javax.swing.*;
 
 public class SimpleGUI {

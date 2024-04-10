@@ -61,8 +61,12 @@ public class UI {
         mainTextArea.setBackground(black);
         mainTextArea.setForeground(white);
         mainTextArea.setFont(normalFont);
+        /*This method belongs to the JTextArea object class, it wraps text so that if the text is outside the bounds of the
+        * JTextArea bounds the text will continue to a new line rather than continuing horizontally */
         mainTextArea.setLineWrap(true);
+        /*This causes the lines to be wrapped at word boundries like spaces, to give a more visually appealing layout to the text */
         mainTextArea.setWrapStyleWord(true);
+        /*This prevents the text from being editable from the user*/
         mainTextArea.setEditable(false);
         mainTextPanel.add(mainTextArea);
 

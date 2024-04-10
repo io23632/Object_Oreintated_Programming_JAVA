@@ -1,7 +1,7 @@
 package Package01;
 
 public class VisibilityManager {
-    // This class handles transitions
+    // This class handles transitions between windows
     UI ui;
     public VisibilityManager(UI userInterface){
     ui = userInterface;
@@ -21,7 +21,6 @@ public class VisibilityManager {
 
     }
 
-
     public void showGameScreen(){
         ui.titleNamePanel.setVisible(false);
         ui.startButtonPanel.setVisible(false);
@@ -30,4 +29,5 @@ public class VisibilityManager {
         ui.choiceButtonPanel.setVisible(true);
         ui.playerPanel.setVisible(true);
     }
+
 }

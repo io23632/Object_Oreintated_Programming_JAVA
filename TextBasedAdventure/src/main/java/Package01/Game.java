@@ -13,7 +13,6 @@ public class Game {
 
     }
     public Game(){
-
         ui.createUI(cHandler);
         vM.showTitleScreen();
 

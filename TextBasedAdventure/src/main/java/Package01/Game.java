@@ -30,6 +30,7 @@ public class Game {
             switch (yourChoice) {
                 case "start":
                     vM.showGameScreen();
+                    story.toTown();
                     break;
                 case  "c1": break;
                 case "c2": break;

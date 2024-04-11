@@ -10,10 +10,11 @@ import static java.awt.Color.*;
 public class UI {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, playerPanel, mainTextPanel, choiceButtonPanel;
-    JLabel titleNameLabel, hpLabel, hpNumberLabel, weaponLabel, weaponTypeLabel;
+    JPanel titleNamePanel, startButtonPanel, playerPanel, mainTextPanel, choiceButtonPanel, playerNamePanel;
+    JLabel titleNameLabel, hpLabel, hpNumberLabel, weaponLabel, weaponTypeLabel, playerNameLabel, playerName;
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
+    JTextField playerNamePrompt;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 90);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 24);
 
@@ -34,6 +35,17 @@ public class UI {
         titleNameLabel.setFont(titleFont);
         titleNamePanel.add(titleNameLabel);
 
+        //Player Name Prompt:
+        playerNamePanel = new JPanel();
+        playerNamePanel.setBounds(50, 50, 300, 100);
+        playerNamePanel.setBackground(black);
+        playerNamePrompt = new JTextField("Enter your name here: ");
+        playerNamePrompt.setBounds(50, 50, 300, 100);
+        playerNamePrompt.setBackground(black);
+        playerNamePrompt.setForeground(white);
+        playerNamePrompt.setFont(normalFont);
+        playerNamePrompt.setEditable(false);
+        playerNamePanel.add(playerNamePrompt);
 
         // Start Button
         startButtonPanel = new JPanel();
@@ -48,8 +60,10 @@ public class UI {
         startButton.setActionCommand("start");
         startButtonPanel.add(startButton);
 
+
         window.add(titleNamePanel);
         window.add(startButtonPanel);
+        //window.add(playerNamePanel);
 
         // Game Window
         mainTextPanel = new JPanel();
@@ -64,7 +78,7 @@ public class UI {
         /*This method belongs to the JTextArea object class, it wraps text so that if the text is outside the bounds of the
         * JTextArea bounds the text will continue to a new line rather than continuing horizontally */
         mainTextArea.setLineWrap(true);
-        /*This causes the lines to be wrapped at word boundries like spaces, to give a more visually appealing layout to the text */
+        /*This causes the lines to be wrapped at word boundaries like spaces, to give a more visually appealing layout to the text */
         mainTextArea.setWrapStyleWord(true);
         /*This prevents the text from being editable from the user*/
         mainTextArea.setEditable(false);
@@ -114,7 +128,7 @@ public class UI {
         playerPanel = new JPanel();
         playerPanel.setBounds(100, 15, 600, 50);
         playerPanel.setBackground(black);
-        playerPanel.setLayout(new GridLayout(1, 4));
+        playerPanel.setLayout(new GridLayout(1, 6));
         window.add(playerPanel);
 
         hpLabel = new JLabel("HP: ");
@@ -133,6 +147,14 @@ public class UI {
         weaponTypeLabel.setForeground(white);
         weaponTypeLabel.setFont(normalFont);
         playerPanel.add(weaponTypeLabel);
+        playerNameLabel = new JLabel("Player: ");
+        playerNameLabel.setForeground(white);
+        playerNameLabel.setFont(normalFont);
+        playerPanel.add(playerNameLabel);
+        playerName = new JLabel();
+        playerName.setForeground(white);
+        playerName.setFont(normalFont);
+        playerPanel.add(playerName);
 
         window.setVisible(true);
     }

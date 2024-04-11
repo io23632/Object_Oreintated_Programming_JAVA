@@ -17,13 +17,18 @@ public class Story {
 
     }
 
-    /* Set the default value for the player hp and weapon of choice */
-
     public void setPlayerDefault(){
+
         player.hp = 10;
         userInterface.hpNumberLabel.setText("" + player.hp);
-        player.weapon  = new Knife();
+        player.weapon = new Knife();
         userInterface.weaponTypeLabel.setText(player.weapon.name);
+    }
+
+    public void toTown(){
+        /**/
+        userInterface.mainTextArea.setText("Welcome to the main Town Area, this is the central Hub of everything, you can choose to go to " +
+                "Different locations here, choose your journey from the options below");
 
     }
 }

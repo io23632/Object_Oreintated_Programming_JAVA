@@ -13,6 +13,7 @@ public class VisibilityManager {
         // like the game screen invisible
         ui.titleNamePanel.setVisible(true);
         ui.startButtonPanel.setVisible(true);
+        ui.playerNamePanel.setVisible(true);
 
         ui.mainTextPanel.setVisible(false);
         ui.choiceButtonPanel.setVisible(false);

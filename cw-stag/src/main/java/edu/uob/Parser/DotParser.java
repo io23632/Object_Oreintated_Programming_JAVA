@@ -139,12 +139,6 @@ public class DotParser {
             return locations;
         }
 
-        public HashMap<String, HashSet<String>> getAccessibleLocations() {
-            return accessibleLocations;
-        }
-
-
-
 }
 
 

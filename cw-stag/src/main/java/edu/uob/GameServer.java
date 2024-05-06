@@ -47,6 +47,8 @@ public final class GameServer {
 //        Locations cabin = dotParser.getLocations().get("cabin");
 //        System.out.println(cabin.getArtefacts().keySet());
 
+        Locations cabin = dotParser.getLocations().get("name");
+        cabin.getAccessibleLocations().forEach(System.out::println);
 
 
 

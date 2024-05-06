@@ -4,7 +4,6 @@ import edu.uob.GameEntities.Artefacts;
 import edu.uob.GameEntities.Locations;
 import edu.uob.Parser.DotParser;
 
-import javax.xml.stream.Location;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,7 +13,6 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,18 +40,46 @@ public final class GameServer {
         String dotFile = entitiesFile.toString();
         dotParser.parseFile(dotFile);
 
-        /* How to access the elements of any Locations: e.g. Here I am accessing the artefacts names in cabin */
-
-//        Locations cabin = dotParser.getLocations().get("cabin");
-//        System.out.println(cabin.getArtefacts().keySet());
-
-        Locations cabin = dotParser.getLocations().get("name");
-        cabin.getAccessibleLocations().forEach(System.out::println);
-
-
-
     }
 
+
+    // Method to move artefact from one Location to next:
+    public void moveArteFact(String fLocation, String tLocation, String artefactName) {
+        Locations fromLocation = dotParser.getLocations().get(fLocation);
+        Locations toLocation = dotParser.getLocations().get(tLocation);
+        if (checkLocationIsNotNull(fromLocation) && checkLocationIsNotNull(toLocation)) {
+
+            Artefacts artefact = fromLocation.getArtefacts().remove(artefactName);
+            if (artefact != null) {
+                toLocation.getArtefacts().put(artefactName, artefact);
+                seeArtefacts(tLocation);
+            }
+            else {
+                System.out.println("Artefact does not exists in location");
+            }
+        }
+    }
+
+    // Method to check if location is null
+    public boolean checkLocationIsNotNull(Locations locationName) {
+        if (locationName != null) {
+            return  true;
+        }
+        else {
+            System.out.println("Location " + locationName + " does not exists");
+            return false;
+        }
+    }
+
+    // Method to see the artefacts in a specified location:
+    public void seeArtefacts(String name){
+        Locations locations = dotParser.getLocations().get(name);
+        HashSet<String> artefactsInLocations = new HashSet<>();
+        if (locations != null) {
+           artefactsInLocations.add(locations.getArtefacts().keySet().toString());
+        }
+        artefactsInLocations.forEach(System.out::println);
+    }
 
     // Method to return the accessible locations
     public Set<String> seeAccessibleLocations(String name){
@@ -70,6 +96,10 @@ public final class GameServer {
         }
         return acceessibleLocationsNames;
     }
+
+
+
+
 
     /**
     * Do not change the following method signature or we won't be able to mark your submission

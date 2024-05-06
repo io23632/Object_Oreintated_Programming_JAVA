@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
 /*
 * 1. Get the document in the Document Builder
 * 2. Get Document
@@ -27,31 +26,22 @@ import java.util.Set;
 * */
 
 public class Main {
-
     static HashMap<String, Laptop> laptops = new HashMap<>();
     String price;
-
     public static void main(String[] args) {
         File parsingFile = Paths.get("config" + File.separator + "laptops.xml").toAbsolutePath().toFile();
-
         // 1. Get the document in the Document Builder
         DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
-
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-
             // 2. Get Document
             Document document = builder.parse(parsingFile);
-
             // 3. Normalise the xml structure
             document.getDocumentElement().normalize();
-
             // 4. Get elements
            NodeList laptopList = document.getElementsByTagName("laptop");
             // This returns a Node List, i.e. this will return all Laptop Nodes
-
             // Retrieve the elements in the list, i.e. name, price, ram, ssd,
-
            for (int i = 0; i < laptopList.getLength(); i++ ) {
                 Node laptop = laptopList.item(i);
                 // Check that what you are retrieving is a ELEMENT
@@ -67,8 +57,6 @@ public class Main {
                    } else {
                        storageType = laptopElement.getElementsByTagName("hardDrive").item(0).getAttributes().getNamedItem("value").getNodeValue();
                    }
-
-
                    Laptop lap = new Laptop(name, price, ram, storageType);
                    laptops.put(name, lap);
                }
@@ -96,23 +84,17 @@ public class Main {
                     System.out.println("Unrecognised Ram");
             }
         }
-
-
-
     }
+
 
     // Method to retrieve Laptop object by name
     public static Laptop getLaptopByName(String name) {
         return laptops.get(name);
     }
-
     // Method to check if Laptop is expensive :
     public static void checkPrice(Laptop lap) {
         if (Integer.parseInt(lap.getPrice()) > 3000) {
             System.out.println(lap.getName() + " is expensive");
         }
-
     }
-
-
 }

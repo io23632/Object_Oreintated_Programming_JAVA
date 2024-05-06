@@ -3,6 +3,7 @@ package edu.uob;
 import edu.uob.GameEntities.Artefacts;
 import edu.uob.GameEntities.Locations;
 import edu.uob.Parser.DotParser;
+import edu.uob.Parser.XMLParser;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,6 +20,7 @@ import java.util.Set;
 public final class GameServer {
     private static final char END_OF_TRANSMISSION = 4;
     DotParser dotParser = new DotParser();
+    XMLParser xmlParser = new XMLParser();
 
     public static void main(String[] args) throws IOException {
         File entitiesFile = Paths.get("config" + File.separator + "basic-entities.dot").toAbsolutePath().toFile();
@@ -38,8 +40,9 @@ public final class GameServer {
         // TODO implement your server logic here
         // Convert the entitiesFile Path to string;
         String dotFile = entitiesFile.toString();
+        String xmlFile = actionsFile.toString();
         dotParser.parseFile(dotFile);
-
+        xmlParser.parseXML(xmlFile);
     }
 
 
